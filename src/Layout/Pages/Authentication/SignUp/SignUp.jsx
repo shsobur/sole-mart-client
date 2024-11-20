@@ -1,27 +1,56 @@
-import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../Components/AuthProvider/AuthProvider";
+// import useAxiosPublic from "../../../Hooks/AxiosPublic/AxiosPublic";
 
 function SignUp() {
+  const { signUpUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm()
-
+  } = useForm();
 
   const onSubmit = (data) => {
     let useStatus = data.role === "seller" ? "pending" : "approved";
-    
+
     const userInfo = {
       userName: data.name,
       userEmail: data.email,
       userRole: data.role,
-      status: useStatus
-    }
+      status: useStatus,
+    };
 
-    console.log(userInfo);
-  }
+    console.log(userInfo, data.password);
+
+    signUpUser(data.email, data.password)
+      .then(() => {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top",
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: "success",
+          title: "Signed up successfully",
+        });
+
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log("Singed Up error:", error);
+      });
+  };
 
   return (
     <>
@@ -36,7 +65,9 @@ function SignUp() {
           ></div>
 
           <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
-            <p className="mt-3 text-2xl font-semibold text-center">Register Now</p>
+            <p className="mt-3 text-2xl font-semibold text-center">
+              Register Now
+            </p>
             <a
               href="#"
               className="flex items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg  hover:bg-gray-100"
@@ -62,13 +93,11 @@ function SignUp() {
               <span className="w-1/5 border-b  lg:w-1/4"></span>
             </div>
 
-
-
-
-
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="mt-4">
-                <p className="pl-1 pb-3 font-semibold text-gray-600">Enter Name</p>
+                <p className="pl-1 pb-3 font-semibold text-gray-600">
+                  Enter Name
+                </p>
                 <input
                   className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
                   {...register("name", { required: true })}
@@ -83,8 +112,11 @@ function SignUp() {
               </div>
 
               <div className="mt-4">
-                <p className="pl-1 pb-3 font-semibold text-gray-600">Select Role</p>
-                <select className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+                <p className="pl-1 pb-3 font-semibold text-gray-600">
+                  Select Role
+                </p>
+                <select
+                  className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
                   {...register("role")}
                 >
                   <option value={"buyer"}>Buyer</option>
@@ -93,7 +125,9 @@ function SignUp() {
               </div>
 
               <div className="mt-4">
-                <p className="pl-1 pb-3 font-semibold text-gray-600">Enter Email</p>
+                <p className="pl-1 pb-3 font-semibold text-gray-600">
+                  Enter Email
+                </p>
                 <input
                   className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
                   {...register("email", { required: true })}
@@ -108,17 +142,45 @@ function SignUp() {
               </div>
 
               <div className="mt-4">
-                <p className="pl-1 pb-3 font-semibold text-gray-600">Enter Password</p>
+                <p className="pl-1 pb-3 font-semibold text-gray-600">
+                  Enter Password
+                </p>
                 <input
                   className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
-                  {...register("password", { required: true })}
+                  {...register("password", {
+                    required: true,
+                    minLength: 8,
+                    pattern: /^(?=.*[a-z])(?=.*[A-Z]).*$/,
+                  })}
+                  // /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$*])(?=.*\d).*$/
                   type="Password"
                   name="password"
                 />
                 <div>
-                  {errors.password?.type === "required" && (
-                    <p className="text-sm text-red-400">Password is required</p>
-                  )}
+                  <div>
+                    {errors.password?.type === "required" && (
+                      <span className="text-sm text-red-500">
+                        Password is required
+                      </span>
+                    )}
+                  </div>
+
+                  <div>
+                    {errors.password?.type === "minLength" && (
+                      <span className="text-sm text-red-500">
+                        Password should be at least 8 characters
+                      </span>
+                    )}
+                  </div>
+
+                  <div>
+                    {errors.password?.type === "pattern" && (
+                      <span className="text-sm text-red-500">
+                        Use at least one uppercase(A-Z), lowercase(a-z) also
+                        number(0 -9) and special character(@, #, $, *) to go.
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
 
@@ -131,9 +193,6 @@ function SignUp() {
                 </button>
               </div>
             </form>
-
-
-
 
             <div className="flex items-center justify-between mt-4">
               <span className="w-1/5 border-b md:w-1/4"></span>

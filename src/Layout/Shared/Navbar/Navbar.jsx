@@ -1,8 +1,37 @@
 import "./Navbar.css";
 import { Link, NavLink } from "react-router-dom";
 import { LuUserCircle } from "react-icons/lu";
+import { useContext } from "react";
+import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 function Navbar() {
+  const { logOut, user } = useContext(AuthContext);
+
+  const handleSignOut = () => {
+    // Sweet Alert to log out__
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to logout!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#2563eb",
+      confirmButtonText: "Yes, logout!",
+    }).then((result) => {
+      // Confirmation to logout__
+      if (result.isConfirmed) {
+        logOut().then(() => {
+          Swal.fire({
+            title: "Loged Out!",
+            text: "Loged out successfully",
+            icon: "success",
+          });
+        });
+      }
+    });
+  };
+
   return (
     <>
       <nav className="navbar_top_main_container">
@@ -37,11 +66,14 @@ function Navbar() {
             </ul>
 
             <div className="navber_user_info_container">
-              <h3>
-                <LuUserCircle />
-              </h3>
+              <h3>{user ? <LuUserCircle /> : ""}</h3>
+
               <h2>
-                <Link to="signIn">Sign In</Link>
+                {user ? (
+                  <button onClick={handleSignOut}>Sign Out</button>
+                ) : (
+                  <Link to="signIn">Sign In</Link>
+                )}
               </h2>
             </div>
           </div>
