@@ -1,0 +1,58 @@
+.navbar_top_main_container {
+  width: 100%;
+  padding: 10px 0;
+  color: #ffffff;
+  background-color: #2563eb;
+}
+
+.navbar_content_outer_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1536px;
+  margin: auto;
+  padding: 0 20px;
+  border-right: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+}
+
+.navbar_name_container h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navber_route_top_main_container {
+  gap: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navber_route_top_main_container ul {
+  gap: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navber_route_top_main_container ul li {
+  font-size: 18px;
+}
+
+.navber_user_info_container {
+  gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navber_user_info_container h3 {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.navber_user_info_container h2 {
+  font-size: 18px;
+  cursor: pointer;
+}
