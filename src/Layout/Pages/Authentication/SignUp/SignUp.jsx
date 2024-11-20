@@ -4,10 +4,11 @@ import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Components/AuthProvider/AuthProvider";
-// import useAxiosPublic from "../../../Hooks/AxiosPublic/AxiosPublic";
+import useAxiosPublic from "../../../Hooks/AxiosPublic/AxiosPublic";
 
 function SignUp() {
-  const { signUpUser } = useContext(AuthContext);
+  const { signUpUser, googleSigninUser } = useContext(AuthContext);
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const {
     register,
@@ -18,15 +19,16 @@ function SignUp() {
   const onSubmit = (data) => {
     let useStatus = data.role === "seller" ? "pending" : "approved";
 
-    const userInfo = {
+    const signInUserInfo = {
       userName: data.name,
       userEmail: data.email,
       userRole: data.role,
       status: useStatus,
     };
 
-    console.log(userInfo, data.password);
+    console.log(signInUserInfo, data.password);
 
+    // Calling user sign up aip__ __ __!
     signUpUser(data.email, data.password)
       .then(() => {
         const Toast = Swal.mixin({
@@ -46,10 +48,39 @@ function SignUp() {
         });
 
         navigate("/");
+
+        axiosPublic.post("/user", signInUserInfo).then((res) => {
+          if (res.data.insertedId > 0) {
+            console.log("User Create successfully");
+          }
+        });
       })
       .catch((error) => {
         console.log("Singed Up error:", error);
       });
+  };
+
+  const handleGoogleSignUp = async () => {
+    await googleSigninUser().then(() => {
+      // Sweet Alert__
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Signed in successfully",
+      });
+
+      navigate("/");
+    });
   };
 
   return (
@@ -70,6 +101,7 @@ function SignUp() {
             </p>
             <a
               href="#"
+              onClick={handleGoogleSignUp}
               className="flex items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg  hover:bg-gray-100"
             >
               <div className="px-4 py-2 text-2xl">

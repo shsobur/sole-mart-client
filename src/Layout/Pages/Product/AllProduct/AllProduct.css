@@ -1,0 +1,116 @@
+.product_main_top_container {
+  height: auto;
+  max-width: 1536px;
+  margin: auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.product_search_bar_outer_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 8px;
+  background-color: #dbdbdb;
+}
+
+/* Bar all section width style__ __ __! */
+
+.product_search_bar_container {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.product_sort_main_outer_container {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product_reset_btn_container {
+  width: auto;
+}
+
+/* Search bar style__ __ __! */
+
+.product_search_bar_container input {
+  width: 100%;
+  padding: 12px;
+  outline: none;
+  font-size: 18px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.product_search_bar_container button {
+  font-size: 1.5rem;
+  color: #ffffff;
+  padding: 13px 40px;
+  background-color: #2563eb;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.product_search_bar_container button:hover {
+  background-color: #225bd6;
+}
+
+.product_search_bar_container button:active {
+  background-color: #1c4fbd;
+}
+
+/* Sort section style__ __ __! */
+
+.product_sort_container {
+  width: 100%;
+}
+
+.product_sort_container select {
+  width: 80%;
+  outline: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.product_reset_btn_container {
+  position: relative;
+}
+
+.product_reset_btn_container button {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  padding: 10px 30px;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 8px;
+  background-color: #2563eb;
+}
+
+.product_reset_btn_container button:hover {
+  background-color: #225bd6;
+}
+
+.product_reset_btn_container button:active {
+  background-color: #1c4fbd;
+}
+
+/* Display container style__ __ __! */
+
+.product_display_and_sort_outer_container {
+  height: calc(100vh - 170px);
+  overflow-y: auto;
+  display: grid;
+  padding: 20px 10px;
+  gap: 20px;
+  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+}

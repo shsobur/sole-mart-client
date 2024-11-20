@@ -9,7 +9,7 @@ function Navbar() {
   const { logOut, user } = useContext(AuthContext);
 
   const handleSignOut = () => {
-    // Sweet Alert to log out__
+    // Sweet Alert to log out__ __ __!
     Swal.fire({
       title: "Are you sure?",
       text: "You want to logout!",
@@ -19,7 +19,7 @@ function Navbar() {
       cancelButtonColor: "#2563eb",
       confirmButtonText: "Yes, logout!",
     }).then((result) => {
-      // Confirmation to logout__
+      // Confirmation to logout__ __ __!
       if (result.isConfirmed) {
         logOut().then(() => {
           Swal.fire({
@@ -45,11 +45,11 @@ function Navbar() {
           <div className="navber_route_top_main_container">
             <ul>
               <li>
-                <NavLink>Home</NavLink>
+                <NavLink to="/">Home</NavLink>
               </li>
 
               <li>
-                <NavLink>Product</NavLink>
+                <NavLink to="/product">Product</NavLink>
               </li>
 
               <li>

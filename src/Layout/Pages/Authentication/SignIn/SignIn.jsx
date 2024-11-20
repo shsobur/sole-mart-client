@@ -8,7 +8,7 @@ import { AuthContext } from "../../../Components/AuthProvider/AuthProvider";
 function SignIn() {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, googleSigninUser } = useContext(AuthContext);
 
   const {
     register,
@@ -17,10 +17,9 @@ function SignIn() {
   } = useForm();
 
   const onSubmit = (data) => {
+    // Calling user sign in aip__ __ __!
     signInUser(data.email, data.password)
       .then(() => {
-        // console.log(result.user);
-
         // Sweet Alert__
         const Toast = Swal.mixin({
           toast: true,
@@ -46,6 +45,35 @@ function SignIn() {
       });
   };
 
+  const handleGoogleSignUp = () => {
+    googleSigninUser()
+      .then(() => {
+        // Sweet Alert__
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top",
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: "success",
+          title: "Signed in successfully",
+        });
+
+        navigate("/");
+
+        
+      })
+      .catch((error) => {
+        console.log("Google sing in error: ", error.message);
+      });
+  }
+
   return (
     <>
       <section className="h-screen flex items-center justify-center">
@@ -65,6 +93,7 @@ function SignIn() {
 
             <a
               href="#"
+              onClick={handleGoogleSignUp}
               className="flex items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg  hover:bg-gray-100"
             >
               <div className="px-4 py-2 text-2xl">
