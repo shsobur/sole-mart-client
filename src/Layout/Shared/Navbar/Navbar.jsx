@@ -7,7 +7,6 @@ function Navbar() {
     <>
       <nav className="navbar_top_main_container">
         <div className="navbar_content_outer_container">
-
           <div className="navbar_name_container">
             <Link to="/">
               <h2>SoleMart</h2>
@@ -15,52 +14,41 @@ function Navbar() {
           </div>
 
           <div className="navber_route_top_main_container">
-
             <ul>
-
               <li>
-                <NavLink>
-                  Home
-                </NavLink>
+                <NavLink>Home</NavLink>
               </li>
 
               <li>
-                <NavLink>
-                  Product
-                </NavLink>
+                <NavLink>Product</NavLink>
               </li>
 
               <li>
-                <NavLink>
-                  About Us
-                </NavLink>
+                <NavLink>About Us</NavLink>
               </li>
 
               <li>
-                <NavLink>
-                  Contact Us
-                </NavLink>
+                <NavLink>Contact Us</NavLink>
               </li>
 
               <li>
-                <NavLink>
-                  Dashboard
-                </NavLink>
+                <NavLink>Dashboard</NavLink>
               </li>
-
             </ul>
 
             <div className="navber_user_info_container">
-              <h3><LuUserCircle /></h3>
-              <h2>Sign In</h2>
+              <h3>
+                <LuUserCircle />
+              </h3>
+              <h2>
+                <Link to="signIn">Sign In</Link>
+              </h2>
             </div>
-
           </div>
-
         </div>
       </nav>
     </>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
