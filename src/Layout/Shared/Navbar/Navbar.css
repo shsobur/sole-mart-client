@@ -18,6 +18,7 @@
 
 .navbar_name_container h2 {
   font-size: 2rem;
+  cursor: pointer;
   font-weight: 600;
   font-family: Arial, Helvetica, sans-serif;
 }

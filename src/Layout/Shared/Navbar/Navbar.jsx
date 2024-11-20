@@ -1,15 +1,17 @@
 import "./Navbar.css";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { LuUserCircle } from "react-icons/lu";
 
 function Navbar() {
   return (
     <>
-      <div className="navbar_top_main_container">
+      <nav className="navbar_top_main_container">
         <div className="navbar_content_outer_container">
 
           <div className="navbar_name_container">
-            <h2>SoleMart</h2>
+            <Link to="/">
+              <h2>SoleMart</h2>
+            </Link>
           </div>
 
           <div className="navber_route_top_main_container">
@@ -56,7 +58,7 @@ function Navbar() {
           </div>
 
         </div>
-      </div>
+      </nav>
     </>
   )
 }
