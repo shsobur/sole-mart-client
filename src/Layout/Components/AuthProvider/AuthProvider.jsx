@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import PropTypes from "prop-types";
 import auth from "../Firebase/firebase.config";
 import { createContext, useEffect, useState } from "react";

@@ -18,5 +18,7 @@
 
 .main_child_component_outer_container {
   width: 80%;
-  border: 2px solid green;
+  height: 100vh;
+  overflow-y: auto;
+  border: 2px solid #f514d7;
 }

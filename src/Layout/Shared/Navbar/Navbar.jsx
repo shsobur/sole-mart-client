@@ -4,9 +4,12 @@ import { LuUserCircle } from "react-icons/lu";
 import { useContext } from "react";
 import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import useUserData from "../../Hooks/UserData/UserData";
 
 function Navbar() {
   const { logOut, user } = useContext(AuthContext);
+  const userData = useUserData();
+  const useeRole = userData.userRole;
 
   const handleSignOut = () => {
     // Sweet Alert to log out__ __ __!
@@ -60,9 +63,15 @@ function Navbar() {
                 <NavLink>Contact Us</NavLink>
               </li>
 
-              <li>
-                <NavLink to="/dashboard">Dashboard</NavLink>
-              </li>
+              {user && (
+                <li>
+                  {useeRole === "admin" || useeRole === "seller" ? (
+                    <NavLink to="/dashboard">Dashboard</NavLink>
+                  ) : (
+                    ""
+                  )}
+                </li>
+              )}
             </ul>
 
             <div className="navber_user_info_container">
