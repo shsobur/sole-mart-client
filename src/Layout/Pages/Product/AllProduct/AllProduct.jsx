@@ -1,7 +1,25 @@
-import { GrPowerReset, GrSearchAdvanced } from "react-icons/gr";
 import "./AllProduct.css";
+import { useEffect, useState } from "react";
+import { GrPowerReset, GrSearchAdvanced } from "react-icons/gr";
+import useAxiosPublic from "../../../Hooks/AxiosPublic/AxiosPublic";
 
 const AllProduct = () => {
+  const axiosPublic = useAxiosPublic();
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    const fatch = async () => {
+      axiosPublic.get("/all-products").then((res) => {
+        setProducts(res.data)
+        setLoading(false);
+      });
+    };
+
+    fatch();
+  }, [axiosPublic]);
+
   return (
     <>
       <section>
@@ -21,7 +39,9 @@ const AllProduct = () => {
             <div className="product_sort_main_outer_container">
               <div className="product_sort_container">
                 <select>
-                  <option>All</option>
+                  <option disabled selected>
+                    Category
+                  </option>
                   <option>Siniker</option>
                   <option>Formal</option>
                   <option>Athlact</option>
@@ -32,7 +52,7 @@ const AllProduct = () => {
               <div className="product_sort_container">
                 <select>
                   <option value="ase">Low to High</option>
-                  <option value="des">High to Low</option>
+                  <option value="desc">High to Low</option>
                 </select>
               </div>
             </div>
@@ -46,205 +66,17 @@ const AllProduct = () => {
           </div>
 
           <div className="product_display_and_sort_outer_container">
-            <div className="card bg-base-100 w-96 shadow-xl">
-              <figure>
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">
-                  Shoes!
-                  <div className="badge badge-secondary">NEW</div>
-                </h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                  <div className="badge badge-outline">Fashion</div>
-                  <div className="badge badge-outline">Products</div>
-                </div>
+            {loading ? (
+              <div className="w-full h-screen flex items-center justify-center">
+                <h2 className="text-2xl">Loading...</h2>
               </div>
-            </div>
-
-            <div className="card bg-base-100 w-96 shadow-xl">
-              <figure>
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">
-                  Shoes!
-                  <div className="badge badge-secondary">NEW</div>
-                </h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                  <div className="badge badge-outline">Fashion</div>
-                  <div className="badge badge-outline">Products</div>
-                </div>
+            ) : products.length === 0 ? (
+              <h2 className="text-2xl text-center">No product found!</h2>
+            ) : (
+              <div className="product_display_and_sort_inner_container">
+                <h2>so manu product</h2>
               </div>
-            </div>
-
-            <div className="card bg-base-100 w-96 shadow-xl">
-              <figure>
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">
-                  Shoes!
-                  <div className="badge badge-secondary">NEW</div>
-                </h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                  <div className="badge badge-outline">Fashion</div>
-                  <div className="badge badge-outline">Products</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="card bg-base-100 w-96 shadow-xl">
-              <figure>
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">
-                  Shoes!
-                  <div className="badge badge-secondary">NEW</div>
-                </h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                  <div className="badge badge-outline">Fashion</div>
-                  <div className="badge badge-outline">Products</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="card bg-base-100 w-96 shadow-xl">
-              <figure>
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">
-                  Shoes!
-                  <div className="badge badge-secondary">NEW</div>
-                </h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                  <div className="badge badge-outline">Fashion</div>
-                  <div className="badge badge-outline">Products</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="card bg-base-100 w-96 shadow-xl">
-              <figure>
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">
-                  Shoes!
-                  <div className="badge badge-secondary">NEW</div>
-                </h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                  <div className="badge badge-outline">Fashion</div>
-                  <div className="badge badge-outline">Products</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="card bg-base-100 w-96 shadow-xl">
-              <figure>
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">
-                  Shoes!
-                  <div className="badge badge-secondary">NEW</div>
-                </h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                  <div className="badge badge-outline">Fashion</div>
-                  <div className="badge badge-outline">Products</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="card bg-base-100 w-96 shadow-xl">
-              <figure>
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">
-                  Shoes!
-                  <div className="badge badge-secondary">NEW</div>
-                </h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                  <div className="badge badge-outline">Fashion</div>
-                  <div className="badge badge-outline">Products</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="card bg-base-100 w-96 shadow-xl">
-              <figure>
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">
-                  Shoes!
-                  <div className="badge badge-secondary">NEW</div>
-                </h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                  <div className="badge badge-outline">Fashion</div>
-                  <div className="badge badge-outline">Products</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="card bg-base-100 w-96 shadow-xl">
-              <figure>
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">
-                  Shoes!
-                  <div className="badge badge-secondary">NEW</div>
-                </h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                  <div className="badge badge-outline">Fashion</div>
-                  <div className="badge badge-outline">Products</div>
-                </div>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </section>

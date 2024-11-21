@@ -108,13 +108,27 @@
 
 .product_display_and_sort_outer_container {
   height: calc(100vh - 170px);
-  overflow-y: auto;
-  display: grid;
   padding: 20px 10px;
-  gap: 20px;
-  justify-items: center;
-  grid-template-columns: repeat(3, 1fr);
 }
+
+.product_display_and_sort_inner_container {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Responsive style__ __ __! */
 
