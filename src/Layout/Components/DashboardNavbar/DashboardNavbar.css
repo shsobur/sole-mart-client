@@ -1,0 +1,75 @@
+.dashboard_title_container {
+  color: #1d55cf;
+  font-size: 2.2rem;
+  padding: 15px 0;
+  font-weight: 800;
+  text-align: center;
+  border-bottom: 5px solid #151515;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Navbar section one__ __ __! */
+
+.dashboard_first_section {
+  padding: 0 20px;
+  padding-bottom: 50px;
+  border-bottom: 2px solid black;
+}
+
+.dashboard_first_section ul li {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #151551;
+  font-weight: 600;
+  margin-bottom: 20px;
+  border-bottom: 2px solid transparent;
+}
+
+.dashboard_first_section ul li:hover {
+  transition: 0.3s ease-in-out;
+  border-bottom: 2px solid black;
+}
+
+/* Navbar section two__ __ __! */
+
+.dashboard_second_section {
+  padding: 50px 20px 0 20px;
+}
+
+.dashboard_second_section ul li {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #151551;
+  font-weight: 600;
+  margin-bottom: 20px;
+  border-bottom: 2px solid transparent;
+}
+
+.dashboard_second_section ul li:hover {
+  transition: 0.3s ease-in-out;
+  border-bottom: 2px solid black;
+}
+
+.dashboard_second_section button {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 50px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: 2px solid #151515;
+}
+
+.dashboard_second_section button:hover {
+  transition: 0.2s ease-in;
+  gap: 15px;
+  background-color: #dee5f3;
+}

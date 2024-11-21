@@ -4,6 +4,9 @@ import HomePageLayout from "../Layout/Pages/Home/HomePageLayout/HomePageLayout";
 import SignIn from "../Layout/Pages/Authentication/SignIn/SignIn";
 import SignUp from "../Layout/Pages/Authentication/SignUp/SignUp";
 import AllProduct from "../Layout/Pages/Product/AllProduct/AllProduct";
+import DashboardLayout from "../Layout/Pages/Dashboard/DashboardLayout/DashboardLayout";
+import AllUser from "../Layout/Pages/Dashboard/Admin/AllUser/AllUser";
+import PrivetRoute from "./PrivetRoute";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +28,20 @@ const router = createBrowserRouter([
       {
         path: "/signUp",
         element: <SignUp></SignUp>,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivetRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivetRoute>
+    ),
+    children: [
+      {
+        path: "/dashboard/allUser",
+        element: <AllUser></AllUser>,
       },
     ],
   },

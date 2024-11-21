@@ -1,0 +1,22 @@
+.main_deshboard_top_container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: auto;
+  max-width: 1920px;
+  margin: auto;
+}
+
+.main_deshboard_sidebar_outer_container {
+  width: 20%;
+  height: 100vh;
+  padding: 0 10px;
+  overflow-y: auto;
+  border-right: 2px solid #151515;
+  background-color: #e8f0ff;
+}
+
+.main_child_component_outer_container {
+  width: 80%;
+  border: 2px solid green;
+}

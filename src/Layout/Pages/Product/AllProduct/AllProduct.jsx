@@ -17,14 +17,16 @@ const AllProduct = () => {
   useEffect(() => {
     setLoading(true);
     const fatch = async () => {
-      await axiosPublic.get(`/all-products?name=${search}&category=${category}&sort=${sort}`).then((res) => {
-        setProducts(res.data);
-        setLoading(false);
-      });
+      await axiosPublic
+        .get(`/all-products?name=${search}&category=${category}&sort=${sort}`)
+        .then((res) => {
+          setProducts(res.data);
+          setLoading(false);
+        });
     };
 
     fatch();
-  }, [axiosPublic, search, category, sort ]);
+  }, [axiosPublic, search, category, sort]);
 
   // Fatching all categorys__ __ __!
   useEffect(() => {
@@ -43,11 +45,11 @@ const AllProduct = () => {
 
   // Handle reset__ __ __!
   const handleReset = () => {
-    setSearch("")
+    setSearch("");
     setCategory("");
     setSort("asc");
     window.location.reload();
-  }
+  };
 
   return (
     <>
@@ -76,7 +78,9 @@ const AllProduct = () => {
                     Category
                   </option>
                   {categoryNames.map((categoryName) => (
-                    <option key={categoryName.category}>{categoryName.category}</option>
+                    <option key={categoryName.category}>
+                      {categoryName.category}
+                    </option>
                   ))}
                 </select>
               </div>

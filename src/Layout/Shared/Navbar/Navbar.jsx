@@ -61,7 +61,7 @@ function Navbar() {
               </li>
 
               <li>
-                <NavLink>Dashboard</NavLink>
+                <NavLink to="/dashboard">Dashboard</NavLink>
               </li>
             </ul>
 
