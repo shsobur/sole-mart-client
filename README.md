@@ -1,6 +1,6 @@
 # SomeMart
 
-## Live sit URL : 
+## Live sit URL : https://sole-mart.web.app/
 
 ### Features :
 
