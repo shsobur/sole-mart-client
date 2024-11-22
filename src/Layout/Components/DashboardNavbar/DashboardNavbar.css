@@ -17,14 +17,18 @@
 }
 
 .dashboard_first_section ul li {
-  gap: 10px;
-  display: flex;
-  align-items: center;
   font-size: 1.5rem;
   color: #151551;
   font-weight: 600;
   margin-bottom: 20px;
   border-bottom: 2px solid transparent;
+}
+
+.dashboard_first_section ul li p {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .dashboard_first_section ul li:hover {
@@ -39,14 +43,18 @@
 }
 
 .dashboard_second_section ul li {
-  gap: 10px;
-  display: flex;
-  align-items: center;
   font-size: 1.5rem;
   color: #151551;
   font-weight: 600;
   margin-bottom: 20px;
   border-bottom: 2px solid transparent;
+}
+
+.dashboard_second_section ul li p {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .dashboard_second_section ul li:hover {

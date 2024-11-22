@@ -25,70 +25,91 @@ const DashboardNavbar = () => {
           <div className="dashboard_first_section">
             {userRole === "admin" && (
               <ul>
-                <NavLink>
-                  <li>
-                    <GrOverview />
-                    OVERVIEW
-                  </li>
-                </NavLink>
+                <li>
+                  <NavLink>
+                    <p>
+                      <GrOverview />
+                      OVERVIEW
+                    </p>
+                  </NavLink>
+                </li>
 
-                <NavLink>
-                  <li>
-                    <LuUsers />
-                    ALL USER
-                  </li>
-                </NavLink>
+                <li>
+                  <NavLink>
+                    <p>
+                      <LuUsers />
+                      ALL USER
+                    </p>
+                  </NavLink>
+                </li>
               </ul>
             )}
 
             {userRole === "seller" && (
               <ul>
-                <NavLink to="/dashboard/addProduct">
-                  <li>
-                    <MdLibraryAdd />
-                    ADD PRODUCT
-                  </li>
-                </NavLink>
+                <li>
+                  <NavLink
+                    to="/dashboard/addProduct"
+                    className={({ isActive }) =>
+                      isActive ? "text-blue-600" : "text-[#151515]"
+                    }
+                  >
+                    <p>
+                      <MdLibraryAdd />
+                      ADD PRODUCT
+                    </p>
+                  </NavLink>
+                </li>
 
-                <NavLink>
-                  <li>
-                    <CiCircleList />
-                    PRODUCT LIST
-                  </li>
-                </NavLink>
+                <li>
+                  <NavLink>
+                    <p>
+                      <CiCircleList />
+                      PRODUCT LIST
+                    </p>
+                  </NavLink>
+                </li>
               </ul>
             )}
           </div>
 
           <div className="dashboard_second_section">
             <ul>
-              <NavLink to="/">
-                <li>
-                  <SlHome />
-                  HOME
-                </li>
-              </NavLink>
+              <li>
+                <NavLink to="/">
+                  <p>
+                    <SlHome />
+                    HOME
+                  </p>
+                </NavLink>
+              </li>
 
-              <NavLink to="/product">
-                <li>
-                  <AiOutlineProduct />
-                  PRODUCT
-                </li>
-              </NavLink>
+              <li>
+                <NavLink to="/product">
+                  <p>
+                    <AiOutlineProduct />
+                    PRODUCT
+                  </p>
+                </NavLink>
+              </li>
 
-              <NavLink>
-                <li>
-                  <LiaBookOpenSolid />
-                  ABOUT US
-                </li>
-              </NavLink>
+              <li>
+                <NavLink>
+                  <p>
+                    <LiaBookOpenSolid />
+                    ABOUT US
+                  </p>
+                </NavLink>
+              </li>
 
-              <NavLink>
-                <li>
-                  <RiContactsBook3Line />
-                  CONTACT US
-                </li>
-              </NavLink>
+              <li>
+                <NavLink>
+                  <p>
+                    <RiContactsBook3Line />
+                    CONTACT US
+                  </p>
+                </NavLink>
+              </li>
 
               <button>
                 Logout
