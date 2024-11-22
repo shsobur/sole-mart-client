@@ -1,8 +1,8 @@
-import "./ProductList.css";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../../Hooks/AxiosSecure/AxiosSecure";
 import useUserData from "../../../../Hooks/UserData/UserData";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ProductList = () => {
   const axiosSecure = useAxiosSecure();
@@ -19,10 +19,41 @@ const ProductList = () => {
     fatchProduct();
   }, [axiosSecure, useData, navigate]);
 
+  // Handle delete product__ __ __!
+  const handleDeleteProduct = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#e00809",
+      cancelButtonColor: "#2563eb",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/product-delete/${id}`).then((res) => {
+          console.log(res.data);
+          if (res.data.deletedCount === 1) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          }
+
+          const remainingData = sellerProducts.filter(
+            (item) => item._id !== id
+          );
+          setSellerProducts(remainingData);
+        });
+      }
+    });
+  };
+
   return (
     <>
-      <div>
-        <section className="container px-4 mx-auto">
+      <div className="w-full h-auto">
+        <section className="container px-4 mx-auto max-w-screen-2xl">
           <div className="flex items-center gap-x-3">
             <h2 className="text-lg font-medium text-gray-800">
               Total Products
@@ -86,7 +117,6 @@ const ProductList = () => {
                         >
                           Edit
                         </th>
-
                       </tr>
                     </thead>
 
@@ -96,7 +126,6 @@ const ProductList = () => {
                         className="bg-white divide-y divide-gray-200"
                       >
                         <tr>
-
                           <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                             <div className="inline-flex items-center gap-x-3">
                               <div className="flex items-center gap-x-2">
@@ -149,7 +178,12 @@ const ProductList = () => {
 
                           <td className="px-4 py-4 text-sm whitespace-nowrap">
                             <div className="flex items-center gap-x-6">
-                              <button className="text-gray-500 transition-colors duration-200 hover:text-red-500 focus:outline-none">
+                              <button
+                                onClick={() =>
+                                  handleDeleteProduct(sellerProduct._id)
+                                }
+                                className="text-gray-500 transition-colors duration-200 hover:text-red-500 focus:outline-none"
+                              >
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
                                   fill="none"
@@ -182,10 +216,8 @@ const ProductList = () => {
                                   />
                                 </svg>
                               </button>
-
                             </div>
                           </td>
-
                         </tr>
                       </tbody>
                     ))}

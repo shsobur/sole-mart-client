@@ -9,7 +9,7 @@ import useUserData from "../../Hooks/UserData/UserData";
 function Navbar() {
   const { logOut, user } = useContext(AuthContext);
   const userData = useUserData();
-  const useeRole = userData.userRole;
+  const userRole = userData.userRole;
 
   const handleSignOut = () => {
     // Sweet Alert to log out__ __ __!
@@ -65,8 +65,16 @@ function Navbar() {
 
               {user && (
                 <li>
-                  {useeRole === "admin" || useeRole === "seller" ? (
-                    <NavLink to="/dashboard">Dashboard</NavLink>
+                  {userRole === "admin" || userRole === "seller" ? (
+                    <NavLink
+                      to={
+                        userRole === "admin"
+                          ? "/dashboard/allUser"
+                          : "/dashboard/addProduct"
+                      }
+                    >
+                      Dashboard
+                    </NavLink>
                   ) : (
                     ""
                   )}
