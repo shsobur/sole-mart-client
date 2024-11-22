@@ -35,7 +35,12 @@ const DashboardNavbar = () => {
                 </li>
 
                 <li>
-                  <NavLink>
+                  <NavLink 
+                    to="/dashboard/allUser"
+                    className={({ isActive }) =>
+                      isActive ? "text-blue-600" : "text-[#151515]"
+                    }
+                  >
                     <p>
                       <LuUsers />
                       ALL USER
