@@ -11,7 +11,6 @@ const useUserData = () => {
     const fatchUserData = async () => {
       const res = await axiosPublic.get(`/user-data/${user.email}`);
       setUserData(res.data);
-
     };
 
     if (user?.email && !loading) {

@@ -12,7 +12,7 @@ function Navbar() {
   const userRole = userData.userRole;
 
   const handleSignOut = () => {
-    // Sweet Alert to log out__ __ __!
+    // Sweet Alert to log out__ __!
     Swal.fire({
       title: "Are you sure?",
       text: "You want to logout!",
@@ -22,7 +22,7 @@ function Navbar() {
       cancelButtonColor: "#2563eb",
       confirmButtonText: "Yes, logout!",
     }).then((result) => {
-      // Confirmation to logout__ __ __!
+      // Confirmation to logout__ __!
       if (result.isConfirmed) {
         logOut().then(() => {
           Swal.fire({

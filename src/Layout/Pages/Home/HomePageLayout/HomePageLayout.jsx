@@ -1,11 +1,11 @@
-import Baner from "../Baner/Baner"
+import Baner from "../Baner/Baner";
 
 function HomePageLayout() {
   return (
     <>
       <Baner></Baner>
     </>
-  )
+  );
 }
 
-export default HomePageLayout
+export default HomePageLayout;

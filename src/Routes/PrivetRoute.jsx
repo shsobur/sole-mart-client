@@ -1,13 +1,13 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
-import { AuthContext } from '../Layout/Components/AuthProvider/AuthProvider';
+import { AuthContext } from "../Layout/Components/AuthProvider/AuthProvider";
 
-const PrivetRoute = ({children}) => {
-  const {user, loading} = useContext(AuthContext);
+const PrivetRoute = ({ children }) => {
+  const { user, loading } = useContext(AuthContext);
 
-  if(loading) {
-    return(
+  if (loading) {
+    return (
       <>
         <div className="w-full mt-5 mb-5 gap-5 flex justify-center flex-col items-center">
           <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-[#7c6a46]"></div>
@@ -18,18 +18,18 @@ const PrivetRoute = ({children}) => {
           </h1>
         </div>
       </>
-    )
+    );
   }
 
-  if(user) {
+  if (user) {
     return children;
   }
 
-  return <Navigate to="/signin"></Navigate>
+  return <Navigate to="/signin"></Navigate>;
 };
 
 PrivetRoute.propTypes = {
-  children: PropTypes.node
-}
+  children: PropTypes.node,
+};
 
 export default PrivetRoute;

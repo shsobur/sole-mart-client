@@ -3,8 +3,8 @@ import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../Components/AuthProvider/AuthProvider";
 import useAxiosPublic from "../../../Hooks/AxiosPublic/AxiosPublic";
+import { AuthContext } from "../../../Components/AuthProvider/AuthProvider";
 
 function SignUp() {
   const { signUpUser, googleSigninUser } = useContext(AuthContext);
@@ -28,7 +28,7 @@ function SignUp() {
 
     console.log(signInUserInfo, data.password);
 
-    // Calling user sign up aip__ __ __!
+    // Calling user sign up aip__ __!
     signUpUser(data.email, data.password)
       .then(() => {
         const Toast = Swal.mixin({
@@ -49,11 +49,7 @@ function SignUp() {
 
         navigate("/");
 
-        axiosPublic.post("/user", signInUserInfo).then((res) => {
-          if (res.data.insertedId > 0) {
-            console.log("User Create successfully");
-          }
-        });
+        axiosPublic.post("/user", signInUserInfo).then(() => {});
       })
       .catch((error) => {
         console.log("Singed Up error:", error);
@@ -62,7 +58,7 @@ function SignUp() {
 
   const handleGoogleSignUp = async () => {
     await googleSigninUser().then(() => {
-      // Sweet Alert__
+      // Sweet Alert__ __!
       const Toast = Swal.mixin({
         toast: true,
         position: "top",

@@ -1,4 +1,5 @@
 import "./Baner.css";
+import { Link } from "react-router-dom";
 
 function Baner() {
   return (
@@ -23,7 +24,11 @@ function Baner() {
               <br /> designed to bring out your individuality and cater to your
               sense of style.
             </p>
-            <button>Shop Now</button>
+            <button>
+              <Link to="/product">
+                Shop Now
+              </Link>
+            </button>
           </div>
         </div>
       </section>

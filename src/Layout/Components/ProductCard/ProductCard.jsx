@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
 import "./ProductCard.css";
+import PropTypes from "prop-types";
 
-const ProductCard = ({cardItem}) => {
+const ProductCard = ({ cardItem }) => {
   return (
     <>
       <section>

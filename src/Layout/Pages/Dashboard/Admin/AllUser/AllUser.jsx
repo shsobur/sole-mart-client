@@ -1,8 +1,7 @@
-import "./AllUser.css";
+import Swal from "sweetalert2";
 import { LuUser } from "react-icons/lu";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../../Hooks/AxiosSecure/AxiosSecure";
-import Swal from "sweetalert2";
 
 const AllUser = () => {
   const [users, setUsers] = useState([]);
@@ -14,7 +13,7 @@ const AllUser = () => {
     });
   }, [axiosSecure]);
 
-  // Handle seller approved__ __ __!
+  // Handle seller approved__ __!
   const handleApprovedSeller = (id) => {
     Swal.fire({
       title: "Are you sure?",

@@ -17,7 +17,7 @@ function SignIn() {
   } = useForm();
 
   const onSubmit = (data) => {
-    // Calling user sign in aip__ __ __!
+    // Calling user sign in aip__ __!
     signInUser(data.email, data.password)
       .then(() => {
         // Sweet Alert__
@@ -48,7 +48,7 @@ function SignIn() {
   const handleGoogleSignUp = () => {
     googleSigninUser()
       .then(() => {
-        // Sweet Alert__
+        // Sweet Alert__ __!
         const Toast = Swal.mixin({
           toast: true,
           position: "top",
@@ -66,13 +66,11 @@ function SignIn() {
         });
 
         navigate("/");
-
-        
       })
       .catch((error) => {
         console.log("Google sing in error: ", error.message);
       });
-  }
+  };
 
   return (
     <>

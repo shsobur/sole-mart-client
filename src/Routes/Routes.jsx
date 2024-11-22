@@ -1,14 +1,14 @@
 import Main from "../Layout/Main/Main";
+import PrivetRoute from "./PrivetRoute";
 import { createBrowserRouter } from "react-router-dom";
-import HomePageLayout from "../Layout/Pages/Home/HomePageLayout/HomePageLayout";
 import SignIn from "../Layout/Pages/Authentication/SignIn/SignIn";
 import SignUp from "../Layout/Pages/Authentication/SignUp/SignUp";
 import AllProduct from "../Layout/Pages/Product/AllProduct/AllProduct";
-import DashboardLayout from "../Layout/Pages/Dashboard/DashboardLayout/DashboardLayout";
 import AllUser from "../Layout/Pages/Dashboard/Admin/AllUser/AllUser";
-import PrivetRoute from "./PrivetRoute";
+import HomePageLayout from "../Layout/Pages/Home/HomePageLayout/HomePageLayout";
 import AddProduct from "../Layout/Pages/Dashboard/Seller/AddProduct/AddProduct";
 import ProductList from "../Layout/Pages/Dashboard/Seller/ProductList/ProductList";
+import DashboardLayout from "../Layout/Pages/Dashboard/DashboardLayout/DashboardLayout";
 
 const router = createBrowserRouter([
   {

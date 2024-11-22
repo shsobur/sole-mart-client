@@ -18,7 +18,7 @@
   background-color: #dbdbdb;
 }
 
-/* Bar all section width style__ __ __! */
+/* Bar all section width style__ __! */
 
 .prusuct_handle_width_container {
   width: 100%;
@@ -35,7 +35,7 @@
   width: auto;
 }
 
-/* Search bar style__ __ __! */
+/* Search bar style__ __! */
 
 .product_search_bar_container {
   width: 100%;
@@ -70,7 +70,7 @@
   background-color: #1c4fbd;
 }
 
-/* Sort section style__ __ __! */
+/* Sort section style__ __! */
 
 .product_sort_container {
   width: 100%;
@@ -109,7 +109,7 @@
   background-color: #1c4fbd;
 }
 
-/* Display container style__ __ __! */
+/* Display container style__ __! */
 
 .product_display_and_sort_outer_container {
   height: calc(100vh - 170px);
@@ -125,7 +125,7 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
-/* Responsive style__ __ __! */
+/* Responsive style__ __! */
 
 @media screen and (max-width: 1280px) {
 }
