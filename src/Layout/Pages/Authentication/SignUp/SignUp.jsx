@@ -178,9 +178,8 @@ function SignUp() {
                   {...register("password", {
                     required: true,
                     minLength: 8,
-                    pattern: /^(?=.*[a-z])(?=.*[A-Z]).*$/,
+                    pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$*])(?=.*\d).*$/,
                   })}
-                  // /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$*])(?=.*\d).*$/
                   type="Password"
                   name="password"
                 />
