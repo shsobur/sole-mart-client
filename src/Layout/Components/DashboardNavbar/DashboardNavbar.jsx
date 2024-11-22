@@ -62,7 +62,12 @@ const DashboardNavbar = () => {
                 </li>
 
                 <li>
-                  <NavLink>
+                  <NavLink
+                    to="/dashboard/productList"
+                    className={({ isActive }) =>
+                      isActive ? "text-blue-600" : "text-[#151515]"
+                    }
+                  >
                     <p>
                       <CiCircleList />
                       PRODUCT LIST

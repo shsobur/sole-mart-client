@@ -1,10 +1,12 @@
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../../Hooks/AxiosSecure/AxiosSecure";
 import Swal from "sweetalert2";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
+import { AuthContext } from "../../../../Components/AuthProvider/AuthProvider";
 
 const AddProduct = () => {
   const axiosSecure = useAxiosSecure();
+  const {user} = useContext(AuthContext);
   const formRef = useRef(null);
   const {
     register,
@@ -18,6 +20,7 @@ const AddProduct = () => {
 
     const newProduct = {
       name: data.name,
+      sellerEmail: user.email,
       oldPrice: data.oldPrice,
       newPrice: data.newPrice,
       savings,
