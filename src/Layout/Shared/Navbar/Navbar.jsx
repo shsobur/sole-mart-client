@@ -5,6 +5,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import useUserData from "../../Hooks/UserData/UserData";
+import { BsCartPlusFill } from "react-icons/bs";
+import { TfiHarddrives } from "react-icons/tfi";
 
 function Navbar() {
   const { logOut, user } = useContext(AuthContext);
@@ -82,8 +84,28 @@ function Navbar() {
               )}
             </ul>
 
+            <div>
+              {userData.userRole === "buyer" && (
+                <div className="navbar_cart_user_info_container">
+                  <div title="Cart" className="navbar_cart_info_container">
+                    <h3>
+                      <BsCartPlusFill />
+                    </h3>
+                    <span>99</span>
+                  </div>
+
+                  <div title="Wish list" className="navbar_cart_info_container">
+                    <h3>
+                      <TfiHarddrives />
+                    </h3>
+                    <span>99</span>
+                  </div>
+                </div>
+              )}
+            </div>
+
             <div className="navber_user_info_container">
-              <h3>{user ? <LuUserCircle /> : ""}</h3>
+              <h3 title={user?.email}>{user ? <LuUserCircle /> : ""}</h3>
 
               <h2>
                 {user ? (

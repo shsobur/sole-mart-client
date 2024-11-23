@@ -41,6 +41,29 @@
   font-size: 18px;
 }
 
+.navbar_cart_user_info_container {
+  gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar_cart_info_container {
+  cursor: pointer;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: 2px solid #ffffff;
+}
+
+.navbar_cart_info_container h3 {
+  font-size: 1.2rem;
+}
+
+
 .navber_user_info_container {
   gap: 20px;
   display: flex;

@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import Swal from "sweetalert2";
 
 const axiosSecure = axios.create({
-  baseURL: "https://sole-mart-db-server.vercel.app",
+  // baseURL: "https://sole-mart-db-server.vercel.app",
+  baseURL: "http://localhost:8000",
   withCredentials: true,
 });
 
