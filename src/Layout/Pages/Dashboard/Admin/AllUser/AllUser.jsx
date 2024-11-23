@@ -22,7 +22,7 @@ const AllUser = () => {
       showCancelButton: true,
       confirmButtonColor: "#088408",
       cancelButtonColor: "#2563eb",
-      confirmButtonText: "Make Admin",
+      confirmButtonText: "Make Seller",
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure.patch(`/make-seller/${id}`).then((res) => {
@@ -139,7 +139,7 @@ const AllUser = () => {
                           </td>
 
                           <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                            shsoburhossen951@gmail.com
+                            {user.userEmail}
                           </td>
 
                           <td className="px-4 py-4 text-sm whitespace-nowrap">

@@ -85,21 +85,33 @@ function Navbar() {
             </ul>
 
             <div>
-              {userData.userRole === "buyer" && (
-                <div className="navbar_cart_user_info_container">
-                  <div title="Cart" className="navbar_cart_info_container">
-                    <h3>
-                      <BsCartPlusFill />
-                    </h3>
-                    <span>99</span>
-                  </div>
+              {user && (
+                <div>
+                  {userData.userRole === "buyer" && (
+                    <div className="navbar_cart_user_info_container">
+                      <Link to="/cart">
+                        <div
+                          title="Cart"
+                          className="navbar_cart_info_container"
+                        >
+                          <h3>
+                            <BsCartPlusFill />
+                          </h3>
+                          <span>99</span>
+                        </div>
+                      </Link>
 
-                  <div title="Wish list" className="navbar_cart_info_container">
-                    <h3>
-                      <TfiHarddrives />
-                    </h3>
-                    <span>99</span>
-                  </div>
+                      <div
+                        title="Wish list"
+                        className="navbar_cart_info_container"
+                      >
+                        <h3>
+                          <TfiHarddrives />
+                        </h3>
+                        <span>99</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </div>

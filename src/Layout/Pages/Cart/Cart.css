@@ -1,0 +1,17 @@
+.main_cart_top_container {
+  margin: auto;
+  max-width: 1536px;
+}
+
+.cart_title_container h2 {
+  font-size: 3rem;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.cart_display_main_container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin: 50px 0;
+}
